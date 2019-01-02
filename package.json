@@ -11,6 +11,7 @@
     },
     "dependencies": {
         "dotenv": "6.2.0",
+        "express": "4.16.4",
         "hubot-heroku-keepalive": "1.0.3",
         "node-telegram-bot-api": "^0.29.0",
         "twitter": "1.7.1"
