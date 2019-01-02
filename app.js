@@ -4,6 +4,14 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').load();
 }
 
+process.on('uncaughtException', function(error) {
+  console.log('\x1b[31m', 'Exception: ', error, '\x1b[0m');
+});
+
+process.on('unhandledRejection', function(error, p) {
+  console.log('\x1b[31m', 'Error: ', error.message, '\x1b[0m');
+});
+
 const Twitter = require('twitter');
 
 const client = new Twitter({
@@ -24,7 +32,7 @@ let currentMode = 'waiting';
 
 const bot = new TelegramBot(token, {polling: true});
 //VARS------------
-const interval = 1000 * 1; /*minute*/
+const interval = 1000 * 60; /*minute*/
 const sheduledHours = [15, 19, 21];
 const notifyGroupRulesTime = [10, 13, 17];
 
