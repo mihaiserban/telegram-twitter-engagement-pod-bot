@@ -1,0 +1,38 @@
+{
+    "name": "twitter-engagement-bot",
+    "version": "1.0.0",
+    "main": "app.js",
+    "license": "MIT",
+    "engines": {
+        "node": ">=8"
+    },
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "dotenv": "6.2.0",
+        "hubot-heroku-keepalive": "1.0.3",
+        "node-telegram-bot-api": "^0.29.0",
+        "twitter": "1.7.1"
+    },
+    "devDependencies": {
+        "babel-eslint": "10.0.1",
+        "eslint": "5.9.0",
+        "eslint-config-prettier": "3.3.0",
+        "eslint-plugin-prettier": "3.0.0",
+        "husky": "1.1.4",
+        "lint-staged": "8.0.5",
+        "prettier": "1.15.2"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{js,json,css,md}": [
+            "prettier --write",
+            "git add"
+        ]
+    }
+}
