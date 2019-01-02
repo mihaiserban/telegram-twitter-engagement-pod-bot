@@ -17,6 +17,7 @@ module.exports = function() {
   let currentMode = 'waiting';
 
   const bot = new TelegramBot(token, {polling: true});
+
   //VARS------------
   const interval = 1000 * 60; /*minute*/
   const sheduledHours = [15, 19, 21];

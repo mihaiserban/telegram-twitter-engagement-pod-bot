@@ -1,17 +1,22 @@
 process.env['NTBA_FIX_319'] = 1;
 
 const app = require('express')();
+const telegramBot = require('./telegramBot');
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').load();
 }
-
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, function() {
-  console.log('Server started on port ' + PORT);
 
-  require('./routes/health')(app);
-  require('./telegramBot')();
+app.listen(PORT, function() {
+  try {
+    console.log('Server started on port ' + PORT);
+
+    require('./routes/health')(app);
+    telegramBot();
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 process.on('uncaughtException', function(error) {
